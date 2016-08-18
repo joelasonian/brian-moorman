@@ -1,0 +1,271 @@
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light|Graduate);
+
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+//Retina Support
+@import "../bower_components/retinajs/dist/_retina.scss";
+
+//MATERIALIZE
+//Materialize Override
+//$primary-color: color("materialize-red", "lighten-2") !default;
+//$primary-color: color("materialize-red", "lighten-2") !default;
+//$secondary-color: color("teal", "lighten-1") !default;
+$secondary-color: #0d47a1;
+//$secondary-color: color("blue", "darken-2");
+
+$navigation-color: #f0c74d;
+
+
+@import "../bower_components/materialize/sass/materialize.scss";
+$bodybg-color: color("grey", "darken-4");
+
+
+//FONTAWESOME
+//$fa-font-path:        "../fonts" !default;
+//$fa-font-size-base:   14px !default;
+//$fa-line-height-base: 1 !default;
+////$fa-font-path:        "//netdna.bootstrapcdn.com/font-awesome/4.6.3/fonts" !default; // for referencing Bootstrap CDN font files directly
+//$fa-css-prefix:       fa !default;
+//$fa-version:          "4.6.3" !default;
+//$fa-border-color:     #eee !default;
+//$fa-inverse:          #fff !default;
+//$fa-li-width:         (30em / 14) !default;
+@import "../bower_components/font-awesome/scss/font-awesome.scss";
+
+body{
+  background-color: $bodybg-color;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: -5px;
+    font: 500 80px 'Graduate', 'sans-serif';
+}
+h2{
+  font-family: 'Shadows Into Light', cursive;
+  @media #{$small-and-down} {
+    font-size: 2.5rem;
+  }
+}
+h4{
+  @media #{$small-and-down} {
+    font-size: 1.5rem;
+  }
+}
+h1,h2,h3,h4,h5{
+  display:block;
+}
+@media #{$small-and-down} {
+  // styles for small screens and down
+  h1 {
+    letter-spacing: 0;
+    font-size: 40px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .fp-controlArrow {
+    &.fp-next {
+      right: 5px;
+      width: 0;
+      border-width: 14px 0 14px 14px;
+    }
+    &.fp-prev {
+      left: 5px;
+      width: 0;
+      border-width: 14px 14px 14px 0;
+    }
+  }
+}
+
+
+.btn-block {
+  display: block;
+  width: 100%;
+  margin: 2px 0;
+}
+
+.hidden, .valign-wrapper .valign.hidden {
+  display:none;
+}
+.noVisible, .notViewed {
+  visibility: hidden;
+}
+
+#fp-nav ul li a span, .fp-slidesNav ul li a span{
+  background: $navigation-color;
+}
+.fp-controlArrow {
+  &.fp-next {
+    border-color: transparent transparent transparent $navigation-color;
+  }
+  &.fp-prev {
+    border-color: transparent $navigation-color transparent transparent ;
+  }
+}
+
+div.animBlock{
+  @include vendor-prefix(animation-duration, 2s);
+}
+
+div.divider{
+  margin-bottom: 30px;
+  background-color: color("grey", "darken-3");
+  @include vendor-prefix(animation-duration, 4s);
+
+}
+.section{
+  padding-top: 6rem;
+  &:first-of-type{
+    padding-top: 1rem;
+  }
+}
+
+p img{
+  margin:10px;
+  border:white 5px solid;
+}
+
+//menu
+#menuwrap, #smallmenuwrap{
+  z-index: 1000;
+  position:fixed;
+  padding:4px;
+  #smallmenubars{
+    height: 25px;
+    line-height: 25px;
+    outline: 0;
+    padding: 0 .5rem;
+  }
+}
+
+ul#menu, ul#smallmenu{
+  position: relative;
+  margin:0;
+  li{
+    float:left;
+    margin: 0 2px 0 0;
+    a {
+      background-color: color("blue-grey", "darken-3");
+    }
+    &.active{
+      a {
+        color: #000000;
+        background-color: color("light-blue", "lighten-5");
+      }
+    }
+    &:last-of-type{
+      a{ background-color: transparent;}
+    }
+  }
+}
+
+ul#smallmenu{
+  .btn, .btn-flat{
+    height: 25px;
+    line-height: 25px;
+    outline: 0;
+    padding: 0 .5rem;
+  }
+}
+
+//animation elements
+#mug{
+  @include vendor-prefix(animation-duration, 3s);
+  @include vendor-prefix(animation-delay, 500ms);
+  @media #{$small-and-down} {
+    width:75%;
+  }
+}
+
+#subs{
+  //@for $item from 1 through 3{
+  //  .col:nth-child(#{$item}){
+  //    @include vendor-prefix(animation-delay, -#{$item}s);
+  //  }
+  //}
+  .col:nth-child(1){
+    @include vendor-prefix(animation-duration, 2s);
+    @include vendor-prefix(animation-delay, 3s);
+  }
+  .col:nth-child(2){
+    @include vendor-prefix(animation-duration, 2s);
+    @include vendor-prefix(animation-delay, 4s);
+  }
+  .col:nth-child(3){
+    @include vendor-prefix(animation-duration, 2s);
+    @include vendor-prefix(animation-delay, 5s);
+  }
+}
+@media #{$small-and-down} {
+  #subs{
+    div.col{
+      &:nth-child(1),&:nth-child(2),&:nth-child(3){
+        @include vendor-prefix(animation-delay, 0s);
+      }
+    }
+  }
+}
+
+#down1{
+  @include vendor-prefix(animation-duration, 2s);
+  @include vendor-prefix(animation-delay, 3s);
+}
+
+//chart
+.ct-series-a .ct-bar{
+  stroke: $secondary-color;
+  stroke-width: 30px;
+}
+.ct-grid{
+  stroke: white;
+  stroke-width:2px;
+  &.ct-vertical{
+    display: none;
+  }
+
+}
+.ct-labels span {
+  color: color("grey", "lighten-2");
+}
+
+
+.navDownArrow{
+  display: block;
+  position:absolute;
+  bottom:50px;
+  left:50%;
+  margin-left: -18px;
+  -webkit-animation: navBounce 1.5s ease-in-out alternate-reverse infinite;
+  -moz-animation: navBounce 1.5s ease-in-out alternate-reverse infinite;
+  -o-animation: navBounce 1.5s ease-in-out alternate-reverse infinite;
+  animation: navBounce 1.5s ease-in-out alternate-reverse infinite;
+  @media #{$small-and-down} {
+    display:none;
+  }
+}
+
+@-webkit-keyframes navBounce {
+  0%   { transform:translateY(-50%); }
+  100% { transform:translateY(0); }
+}
+@-moz-keyframes navBounce {
+  0%   { transform:translateY(-50%); }
+  100% { transform:translateY(0); }
+}
+@-o-keyframes navBounce {
+  0%   { transform:translateY(-50%); }
+  100% { transform:translateY(0); }
+}
+@keyframes navBounce {
+  0%   { transform:translateY(-50%); }
+  100% { transform:translateY(0); }
+}
+
+

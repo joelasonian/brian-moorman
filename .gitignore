@@ -1,0 +1,6 @@
+_env.php
+.idea/
+node_modules/
+.DS_store
+src/bower_components
+vendor/

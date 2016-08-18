@@ -1,0 +1,15 @@
+{
+  "name": "brian-moorman",
+  "description": "Who is Brian Moorman?",
+  "version": "0.0.1",
+  "dependencies": {
+    "materialize": "^0.97.7",
+    "jquery-form": "jquery.ajaxForm#^3.46.0",
+    "jquery-validation": "^1.15.1",
+    "fullpage.js": "^2.8.2",
+    "font-awesome": "fontawesome#^4.6.3",
+    "textillate": "^0.4.0",
+    "chartist": "^0.9.8",
+    "retinajs": "^2.1.0"
+  }
+}
