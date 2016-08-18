@@ -100,7 +100,7 @@ gulp.task('inject', ['copy-bower-scripts','copy-bower-styles','scripts','sass'],
         sources,
         {
             removeTags: true,
-            addRootSlash: true
+            addRootSlash: false
         })
     ).pipe(gulp.dest('dist/public'));
 });
