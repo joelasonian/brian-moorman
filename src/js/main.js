@@ -44,6 +44,9 @@ var fullPageOptions = {
 //INIT
 //Handling the init and destroy of fullpage.js
 $(function(){
+    $('.next').on('click', function(){
+        $(window).scroll();
+    });
     var $blocks = $('.animBlock.notViewed');
     var $window = $(window);
     $window.on('scroll', function(e){
@@ -53,7 +56,6 @@ $(function(){
             isScrolledIntoView($(this));
         });
     });
-
     refreshFullPageJs();
     $(window).resize(function() {
         $(window).scroll();
@@ -67,19 +69,21 @@ $(function(){
 function createFullpage() {
     if(fullPageCreated === false) {
         fullPageCreated = true;
+        $('.navDownArrow').removeClass('hide');
         $('#fullpage').fullpage(fullPageOptions);
     }
 }
 
 //check viewport width
 function refreshFullPageJs() {
-    if ($(window).width() <= 600) {
+    if (($(window).width() <= 600) || ($(window).height() <= 700)) {
         if(fullPageCreated) {
             fullPageCreated = false;
+            $('.navDownArrow').addClass('hide');
             $.fn.fullpage.destroy('all');
         }
     }
-    if ($(window).width() > 601) {
+    if (($(window).width() > 601) && ($(window).height() > 701)) {
         createFullpage();
     }
 }
@@ -127,8 +131,6 @@ $('#smallmenuhide').on('click', function(){
     hideSmallMenuNav();
 });
 
-
-
 var textillateElems = ['H1','H2','H3','H4','H5'];
 
 function isElementInViewport (el) {
@@ -164,27 +166,23 @@ function isScrolledIntoView(elem) {
    // if((elemBottom >= docViewBottom) && (elemTop <= docViewTop)) {
         if(isElementInViewport($(elem))){
         //how about left to right?
-
-            if($.inArray($(elem).prop('tagName'), textillateElems) !== -1) {
-                //TEXTILLATE
-                var animationdelay =  ($(elem).data('in-delay')) ? $(elem).data('in-delay') : 0 ;
-                var characterdelay =  ($(elem).data('in-char-delay')) ? $(elem).data('in-char-delay') : 50 ;
-                $(elem).removeClass('notViewed').addClass('viewed').textillate({initialDelay: animationdelay, in:{delay:characterdelay}});
-            } else {
-                //ANIMATE
-                var animationname = ($(elem).data('in-effect')) ? $(elem).data('in-effect') :  'fadeInUp';
-                $(elem).removeClass('notViewed').addClass('viewed').animateCss(animationname);
-            }
-            var animElemsLeft = $('.animBlock.notViewed').length;
-            if(animElemsLeft == 0){
-                // with no animated elements left debind the scroll event
-                $(window).off('scroll');
-            }
-
+        if($.inArray($(elem).prop('tagName'), textillateElems) !== -1) {
+            //TEXTILLATE
+            var animationdelay =  ($(elem).data('in-delay')) ? $(elem).data('in-delay') : 0 ;
+            var characterdelay =  ($(elem).data('in-char-delay')) ? $(elem).data('in-char-delay') : 50 ;
+            $(elem).removeClass('notViewed').addClass('viewed').textillate({initialDelay: animationdelay, in:{delay:characterdelay}});
+        } else {
+            //ANIMATE
+            var animationname = ($(elem).data('in-effect')) ? $(elem).data('in-effect') :  'fadeInUp';
+            $(elem).removeClass('notViewed').addClass('viewed').animateCss(animationname);
+        }
+        var animElemsLeft = $('.animBlock.notViewed').length;
+        if(animElemsLeft == 0){
+            // with no animated elements left debind the scroll event
+            $(window).off('scroll');
+        }
     }
 }
-
-
 
 var chart = new Chartist.Bar('.ct-chart', {
     labels: [''],
@@ -192,6 +190,7 @@ var chart = new Chartist.Bar('.ct-chart', {
         [84]
     ]
 }, {
+    height: '100px',
     axisX : {
         type : Chartist.FixedScaleAxis,
         low : 0,
