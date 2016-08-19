@@ -69,7 +69,7 @@ $(function(){
 function createFullpage() {
     if(fullPageCreated === false) {
         fullPageCreated = true;
-        $('.navDownArrow').removeClass('hide');
+        $('.navDownArrow, .navbutton').removeClass('hide');
         $('#fullpage').fullpage(fullPageOptions);
     }
 }
@@ -79,7 +79,7 @@ function refreshFullPageJs() {
     if (($(window).width() <= 600) || ($(window).height() <= 700)) {
         if(fullPageCreated) {
             fullPageCreated = false;
-            $('.navDownArrow').addClass('hide');
+            $('.navDownArrow, .navbutton').addClass('hide');
             $.fn.fullpage.destroy('all');
         }
     }
@@ -203,7 +203,7 @@ var chart = new Chartist.Bar('.ct-chart', {
 
 // Once the chart is fully created we reset the sequence
 chart.on('created', function() {
-    $('.ct-series-a .ct-bar').addClass('notViewed animBlock').data('in-effect','fadeInLeft');
+   // $('.ct-series-a .ct-bar').addClass('notViewed animBlock').data('in-effect','fadeInLeft');
 });
 
 retinajs();
