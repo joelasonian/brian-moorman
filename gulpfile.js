@@ -9,7 +9,15 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var cssnano = require('gulp-cssnano');
 var md5 = require("gulp-md5");
+var bower = require("gulp-bower");
 
+
+//Install bower components
+gulp.task('load-bower-components', function(){
+    return bower();
+});
+
+//Delete the public folder
 gulp.task('initclean',function(){
     return del(['dist/public/*']);
 });
@@ -31,9 +39,6 @@ gulp.task('copy-bower-scripts',['initclean'], function(){
     gulp.src(['src/bower_components/jquery/dist/jquery.min.js'])
         .pipe(gulp.dest('dist/public/js/'));
     return gulp.src([
-        //"src/bower_components/jquery/dist/jquery.min.js",
-        //"src/bower_components/jquery-form/jquery.form.js",
-        //"src/bower_components/jquery-validation/dist/jquery.validate.min.js",
         "src/bower_components/Materialize/dist/js/*.min.js",
         "src/bower_components/fullpage.js/dist/jquery.fullpage.min.js",
         "src/bower_components/letteringjs/jquery.lettering.js",
@@ -42,7 +47,6 @@ gulp.task('copy-bower-scripts',['initclean'], function(){
         "src/bower_components/retinajs/dist/retina.min.js"
     ])
         .pipe(concat('vendor.js'))
-        //.pipe(gulp.dest('dist'))
         .pipe(rename('vendor.min.js'))
         .pipe(uglify())
         .pipe(md5())
@@ -65,7 +69,6 @@ gulp.task('copy-bower-styles',['initclean'], function(){
 gulp.task('scripts',['initclean'], function() {
     return gulp.src('src/js/*.js')
         .pipe(concat('all.js'))
-        //.pipe(gulp.dest('dist'))
         .pipe(rename('all.min.js'))
         .pipe(uglify())
         .pipe(md5())

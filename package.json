@@ -2,6 +2,7 @@
   "devDependencies": {
     "del": "latest",
     "gulp": "latest",
+    "gulp-bower": "0.0.13",
     "gulp-concat": "latest",
     "gulp-cssnano": "latest",
     "gulp-inject": "latest",

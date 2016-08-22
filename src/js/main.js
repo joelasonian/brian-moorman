@@ -2,16 +2,27 @@
 "use strict";
 //extend jquery
 $.fn.extend({
+    //animate.css function
     animateCss: function (animationName, callBack) {
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
         $(this).addClass('animated ' + animationName).one(animationEnd, function() {
             $(this).removeClass('animated ' + animationName);
             if ($.isFunction(callBack)){
-                return callBack();
+                callBack();
             }
         });
+        return this;
+    },
+    //Google Analytics
+    trackThis: function(){
+        if ($(this).data('track-page')){
+            ga('send', 'pageview', $(this).data('track-page'));
+        }
+        return this;
     }
 });
+
+
 
 var brian = function(){
     //protected variables
@@ -51,6 +62,17 @@ var brian = function(){
     return {
         init : function(){
             //INIT
+            //Track events
+            $('.eventtrack').on('click',function(e){
+                //e.preventDefault();
+                var urlToNav = $(this).attr('href');
+                ga('send', 'event', $(this).data('category'), $(this).data('action'), $(this).data('label'),{
+                        'hitCallback': function() {
+                           // window.document.location = urlToNav;
+                        }
+                    }
+                );
+            });
             //Handling the init and destroy of fullpage.js
             $(function(){
                 $('.next').on('click', function(){
@@ -172,22 +194,16 @@ var brian = function(){
             );
         },
         isScrolledIntoView: function(elem) {
-            var docViewTop = $(window).scrollTop();
-            var docViewBottom = docViewTop + $(window).height();
-            var elemTop = $(elem).offset().top;
-            var elemBottom = elemTop + $(elem).height();
-
-            // if((elemBottom >= docViewBottom) && (elemTop <= docViewTop)) {
             if(brian.isElementInViewport($(elem))){
                 if($.inArray($(elem).prop('tagName'), util.textillateElems) !== -1) {
                     //TEXTILLATE
                     var animationdelay =  ($(elem).data('in-delay')) ? $(elem).data('in-delay') : 0 ;
                     var characterdelay =  ($(elem).data('in-char-delay')) ? $(elem).data('in-char-delay') : 50 ;
-                    $(elem).removeClass('notViewed').addClass('viewed').textillate({initialDelay: animationdelay, in:{delay:characterdelay}});
+                    $(elem).removeClass('notViewed').addClass('viewed').trackThis().textillate({initialDelay: animationdelay, in:{delay:characterdelay}});
                 } else {
                     //ANIMATE
                     var animationname = ($(elem).data('in-effect')) ? $(elem).data('in-effect') :  'fadeInUp';
-                    $(elem).removeClass('notViewed').addClass('viewed').animateCss(animationname);
+                    $(elem).removeClass('notViewed').addClass('viewed').trackThis().animateCss(animationname);
                 }
                 var animElemsLeft = $('.animBlock.notViewed').length;
                 if(animElemsLeft == 0){
