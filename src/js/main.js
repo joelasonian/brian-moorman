@@ -64,14 +64,7 @@ var brian = function(){
             //INIT
             //Track events
             $('.eventtrack').on('click',function(e){
-                //e.preventDefault();
-                var urlToNav = $(this).attr('href');
-                ga('send', 'event', $(this).data('category'), $(this).data('action'), $(this).data('label'),{
-                        'hitCallback': function() {
-                           // window.document.location = urlToNav;
-                        }
-                    }
-                );
+                ga('send', 'event', $(this).data('category'), $(this).data('action'), $(this).data('label'));
             });
             //Handling the init and destroy of fullpage.js
             $(function(){

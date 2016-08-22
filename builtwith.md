@@ -1,4 +1,4 @@
-# Featured Technologies Used
+# Featured Technologies
 > A detailed description of key technologies used to create the [Brian Moorman Project](README.md).
 
 ## Materialize
@@ -31,7 +31,7 @@ The Brian Moorman Project requires control of the timing of the animations as th
 
 Textillate is a jQuery plugin that applies the animations provided by Animate.css to the individual characters and words of a string.  This plugin depends on Animate.css.    
 
-Textillate is leveraged on the Brian Moorman Project on all of the headers including the site's `h1` tag and each section's `h2`, `h3` and `h4` tags.
+Textillate is leveraged in the Brian Moorman Project on all of the headers including the site's `h1` tag and each section's `h2`, `h3` and `h4` tags.
 ## Chartist.js
 > https://gionkunz.github.io/chartist-js/
 
@@ -42,7 +42,7 @@ Chartist.js is used in the Brian Moorman Project to generate the bar chart displ
 ## Retina.js
 > https://imulus.github.io/retinajs/
 
-Retina.js checks the resolution support of the current device and will swap out lower resolution images with their higher resolution counterparts if supported.  This reduces overhead on devices that with lower resolution.
+Retina.js checks the resolution support of the current device and will swap out lower resolution images with their higher resolution counterparts if supported.  This reduces overhead on lower resolution devices.
 
 
 In the Brian Moorman Project the images that have a higher resolution option available are marked with a `data-rjs` parameter which signals to Retina.js to load in the[@2x](https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW1) version of the image if supported. 
@@ -83,6 +83,6 @@ Minifies CSS
 #### gulp-md5
 Renames files based on MD5 checksum
 
-### gulp-inject
+#### gulp-inject
 Inserts javascript files and CSS stylesheets into the final html files
 
