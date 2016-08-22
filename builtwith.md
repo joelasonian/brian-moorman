@@ -4,7 +4,7 @@
 ## Materialize
 > http://materializecss.com/
 
-Materialize is a front end framework based on Google's[Materialize Design](https://material.google.com/) which provides components, helper classes, a grid system and responsive support for websites and applications.  Materialize provides Sass support streamlining customization. 
+Materialize is a front end framework based on Google's [Materialize Design](https://material.google.com/) which provides components, helper classes, a grid system and responsive support for websites and applications.  Materialize provides Sass support streamlining customization. 
     
 The Brian Moorman project relies on Materialize's grid system as well as buttons and responsive support for layout and images.    
 ## Fullpage.js
@@ -61,7 +61,7 @@ In the above case Retina.js saves 68 kb of overhead on a single image load on sc
 ## Gulp.js
 >https://github.com/gulpjs/gulp
 
-The Brian Moorman Project is built on[npm](https://www.npmjs.com/) and leverages[gulp.js](https://github.com/gulpjs/gulp) to build the public files from the source files.   Below are the key packages used to generate the Brian Moorman Project. 
+The Brian Moorman Project is built on [npm](https://www.npmjs.com/) and leverages [gulp.js](https://github.com/gulpjs/gulp) to build the public files from the source files.   Below are the key packages used to generate the Brian Moorman Project. 
 #### gulp-bower
 Loads the project's Bower packages
 
