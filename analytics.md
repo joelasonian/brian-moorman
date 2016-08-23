@@ -1,5 +1,5 @@
 # Google Analytics
-> Highlighting the analytics incorporated in the[Brian Moorman Project](README.md).
+> Highlighting the analytics incorporated in the [Brian Moorman Project](README.md).
 The Brian Moorman Project is capturing page views, events and goal conversions using Google Analytics.  
 
 ## Page Views
