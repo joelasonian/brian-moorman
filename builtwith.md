@@ -4,7 +4,7 @@
 ## Materialize
 > http://materializecss.com/
 
-Materialize is a front end framework based on Google's [Materialize Design](https://material.google.com/) which provides components, helper classes, a grid system and responsive support for websites and applications.  Materialize provides Sass support streamlining customization. 
+Materialize is a front end framework based on Google's [Material Design](https://material.google.com/) which provides components, helper classes, a grid system and responsive support for websites and applications.  Materialize provides Sass support streamlining customization. 
     
 The Brian Moorman project relies on Materialize's grid system as well as buttons and responsive support for layout and images.    
 ## Fullpage.js
